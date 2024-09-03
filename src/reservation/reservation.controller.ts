@@ -1,4 +1,4 @@
-import { MailerService } from './../mailer/mailer.service';
+
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { ReservationService } from './reservation.service';
 import { CreateReservationDto } from './dto/create-reservation.dto';
@@ -9,7 +9,7 @@ import { ApiTags } from '@nestjs/swagger';
 @ApiTags("Reservation")
 @Controller('/api/reservation')
 export class ReservationController {
-  constructor(private readonly reservationService: ReservationService, private readonly mailerService: MailerService) { }
+  constructor(private readonly reservationService: ReservationService) { }
 
   @Post()
   create(@Body() createReservationDto: CreateReservationDto) {

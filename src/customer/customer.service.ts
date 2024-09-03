@@ -13,10 +13,12 @@ export class CustomerService {
       if (error instanceof Prisma.PrismaClientValidationError) {
         const errorMessage = error.message;
         let newError = errorMessage
-        if (errorMessage.includes('Argument `email` is missing')) {
+        if (errorMessage.includes('Argument `email` is missing') ||
+          errorMessage.includes('Argument `email` must not be null')) {
           newError = "email is required"
         }
-        if (errorMessage.includes('Argument `name` is missing')) {
+        if (errorMessage.includes('Argument `name` is missing') ||
+          errorMessage.includes('Argument `name` must not be null')) {
           newError = "name is required"
         }
         throw new BadRequestException('Validation error: ' + newError);
